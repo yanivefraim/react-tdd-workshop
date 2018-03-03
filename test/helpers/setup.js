@@ -21,7 +21,7 @@ module.exports = async () => {
   }
 
   const browser = (global.BROWSER = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: ['--no-sandbox'],
   }));
 
