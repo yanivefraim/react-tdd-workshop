@@ -69,8 +69,7 @@
         "testMatch": [
           "<rootDir>/**/*.e2e.js"
         ],
-        "setupTestFrameworkScriptFile": "./test/helpers/setupFramework.js",
-        "watchPathIgnorePatterns": ["<rootDir>/src/"]
+        "setupTestFrameworkScriptFile": "./test/helpers/setupFramework.js"
       },
       {
         "displayName": "jsdom",
@@ -82,8 +81,7 @@
           "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
           "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
           "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-        },
-        "watchPathIgnorePatterns": ["<rootDir>/src/"]
+        }
       }
     ],
     "globalSetup": "./test/helpers/setup.js",
