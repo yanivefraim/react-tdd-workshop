@@ -31,6 +31,7 @@ class App extends React.Component {
           p1Name={this.state.p1Name}
           p2Name={this.state.p2Name}
         />
+        <div data-hook="winner-message">Yaniv won!</div>
       </div>
     );
   }
