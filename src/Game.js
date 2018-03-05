@@ -6,6 +6,13 @@ const Game = props => {
     <div>
       <span data-hook="p1-name">{props.p1Name}</span>
       <span data-hook="p2-name">{props.p2Name}</span>
+      <table>
+        <tbody>
+          <tr>
+            <td data-hook="cell">X</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
