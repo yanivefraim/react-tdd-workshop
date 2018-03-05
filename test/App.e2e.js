@@ -36,6 +36,7 @@ describe('Tic Tac Toe', () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);
+    expect(await driver.getACellValueAt(0)).toBe('');
     await driver.clickACellAt(0);
     expect(await driver.getACellValueAt(0)).toBe('X');
   });
