@@ -5,6 +5,8 @@
 
 WIP - This is the repo for my [React TDD Workshop](https://www.meetup.com/Kyiv-ReactJS-Meetup/events/247392848/?_cookie-check=5Otr21FDGjz27aUV)
 
+In this workshop we will practice TDD using Puppeteer, for browser tests and Jest (with JSDOM), for compoennt tests.
+
 
 ## Usage
 
