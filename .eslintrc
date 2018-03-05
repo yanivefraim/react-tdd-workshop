@@ -22,6 +22,7 @@
         "trailingComma": "all"
       }
     ],
+    "react/no-array-index-key": "off",
     "arrow-body-style": "off",
     "class-methods-use-this": "off",
     "consistent-return": "off",
