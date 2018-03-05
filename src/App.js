@@ -10,6 +10,7 @@ class App extends React.Component {
       p1Name: '',
       p2Name: '',
       board: [['', '', ''], ['', '', ''], ['', '', '']],
+      winner: '',
     };
   }
   onNewGame = ({ p1Name, p2Name }) => {
@@ -19,6 +20,9 @@ class App extends React.Component {
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
     board[rIndex][cIndex] = 'X';
+    if (board[0].every(cell => cell === 'X')) {
+      this.setState({ winner: 'X' });
+    }
     this.setState({ board });
   };
   render() {
@@ -31,7 +35,7 @@ class App extends React.Component {
           p1Name={this.state.p1Name}
           p2Name={this.state.p2Name}
         />
-        <div data-hook="winner-message">Yaniv won!</div>
+        {this.state.winner && <div data-hook="winner-message">Yaniv won!</div>}
       </div>
     );
   }
