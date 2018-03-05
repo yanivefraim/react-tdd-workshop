@@ -10,6 +10,7 @@ const appDriver = page => ({
   clickACellAt: index => page.$$eval('[data-hook="cell"]', (cells, i) => cells[i].click(), index),
   getACellValueAt: index =>
     page.$$eval('[data-hook="cell"]', (cells, i) => cells[i].innerText, index),
+  getWinnerMessage: () => page.$eval('[data-hook="winner-message"]', el => el.innerText),
 });
 
 describe('Tic Tac Toe', () => {
@@ -39,5 +40,17 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getACellValueAt(0)).toBe('');
     await driver.clickACellAt(0);
     expect(await driver.getACellValueAt(0)).toBe('X');
+  });
+
+  test('first player should win the game', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(0);
+    await driver.clickACellAt(3);
+    await driver.clickACellAt(1);
+    await driver.clickACellAt(4);
+    await driver.clickACellAt(2);
+    expect(await driver.getWinnerMessage()).toBe(`${player1} won!`);
   });
 });
