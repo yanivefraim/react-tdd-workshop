@@ -35,7 +35,7 @@ We will be building the [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
 The end result will be something like this:
 
-<img width="241" src ="assets/tic-tac-toe.png" />
+<img width="241" src ="public/tic-tac-toe.png" />
 
 ## Workshop
 
