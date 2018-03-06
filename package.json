@@ -85,6 +85,13 @@
           "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
           "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
         }
+      },
+      {
+        "displayName": "unit",
+        "testEnvironment": "node",
+        "testMatch": [
+          "<rootDir>/**/*.unit.js"
+        ]
       }
     ],
     "globalSetup": "./test/helpers/setup.js",
