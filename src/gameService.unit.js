@@ -27,7 +27,7 @@ const { gameStatus } = require('./gameService');
   });
 });
 
-it('should be a tie', () => {
+test('should be a tie', () => {
   const board = [['X', 'O', 'X'], ['X', 'O', 'O'], ['O', 'X', 'O']];
   expect(gameStatus(board)).toBe('-');
 });
