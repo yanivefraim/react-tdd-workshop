@@ -22,6 +22,7 @@ const appDriver = () => {
         .find('[data-hook="cell"]')
         .at(index)
         .text(),
+    getWinnerMessage: () => wrapper.find('[data-hook="winner-message"]').text(),
   };
 };
 

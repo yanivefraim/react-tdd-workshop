@@ -3,4 +3,7 @@ export const gameStatus = board => {
   if (isWin('X')) {
     return 'X';
   }
+  if (isWin('O')) {
+    return 'O';
+  }
 };

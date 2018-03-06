@@ -22,8 +22,8 @@ class App extends React.Component {
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
     board[rIndex][cIndex] = this.state.currentPlayer;
-    if (gameStatus(board) === 'X') {
-      this.setState({ winner: 'X' });
+    if (gameStatus(board) === this.state.currentPlayer) {
+      this.setState({ winner: this.state.currentPlayer });
     }
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
     this.setState({ board, currentPlayer: nextPlayer });
@@ -38,7 +38,11 @@ class App extends React.Component {
           p1Name={this.state.p1Name}
           p2Name={this.state.p2Name}
         />
-        {this.state.winner && <div data-hook="winner-message">Yaniv won!</div>}
+        {this.state.winner && (
+          <div data-hook="winner-message">
+            {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
+          </div>
+        )}
       </div>
     );
   }
