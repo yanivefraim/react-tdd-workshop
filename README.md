@@ -54,5 +54,7 @@ The end result will be something like this:
 2. Write a component test verifiying a user cannot press a non empty cell.
 3. Write a component test for a tie (show a "It's a tie!" message).
 4. Write a browser test for marking next user in a special color (show 'X' and 'O' users and mark next user in special color).
-5. Write a component test for displaying the number of wins next to each user: Win a game. Press a "new game" button, and win the game again.
+5. Write a browser test for hiding registration form after game starts.
+6. Write a browser test for hiding game board before game starts.
+7. Write a component test for displaying the number of wins next to each user: Win a game. Press a "new game" button, and win the game again.
 
