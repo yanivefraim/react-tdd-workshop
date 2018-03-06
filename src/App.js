@@ -11,6 +11,7 @@ class App extends React.Component {
       p2Name: '',
       board: [['', '', ''], ['', '', ''], ['', '', '']],
       winner: '',
+      currentPlayer: 'X',
     };
   }
   onNewGame = ({ p1Name, p2Name }) => {
@@ -19,11 +20,12 @@ class App extends React.Component {
 
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
-    board[rIndex][cIndex] = 'X';
+    board[rIndex][cIndex] = this.state.currentPlayer;
     if (board[0].every(cell => cell === 'X')) {
       this.setState({ winner: 'X' });
     }
-    this.setState({ board });
+    const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
+    this.setState({ board, currentPlayer: nextPlayer });
   };
   render() {
     return (
