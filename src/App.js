@@ -25,8 +25,9 @@ class App extends React.Component {
       return;
     }
     board[rIndex][cIndex] = this.state.currentPlayer;
-    if (gameStatus(board) === this.state.currentPlayer) {
-      this.setState({ winner: this.state.currentPlayer });
+    const winner = gameStatus(board);
+    if (winner) {
+      this.setState({ winner });
     }
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
     this.setState({ board, currentPlayer: nextPlayer });
@@ -43,7 +44,9 @@ class App extends React.Component {
         />
         {this.state.winner && (
           <div data-hook="winner-message">
-            {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
+            {this.state.winner === '-'
+              ? 'it is a tie!'
+              : `${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
           </div>
         )}
       </div>

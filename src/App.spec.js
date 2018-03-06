@@ -48,3 +48,20 @@ test('cannot click a cell twice', () => {
   driver.clickACellAt(4);
   expect(driver.getACellAt(4)).toBe('X');
 });
+
+test('should have a tie', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  driver.clickACellAt(0);
+  driver.clickACellAt(1);
+  driver.clickACellAt(2);
+  driver.clickACellAt(3);
+  driver.clickACellAt(4);
+  driver.clickACellAt(6);
+  driver.clickACellAt(5);
+  driver.clickACellAt(8);
+  driver.clickACellAt(7);
+  expect(driver.getWinnerMessage()).toBe(`it is a tie!`);
+});
