@@ -1,6 +1,7 @@
 import React from 'react';
 import Registration from './Registration';
 import Game from './Game';
+import { gameStatus } from './gameService';
 import './App.css';
 
 class App extends React.Component {
@@ -21,7 +22,7 @@ class App extends React.Component {
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
     board[rIndex][cIndex] = this.state.currentPlayer;
-    if (board[0].every(cell => cell === 'X')) {
+    if (gameStatus(board) === 'X') {
       this.setState({ winner: 'X' });
     }
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
