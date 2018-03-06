@@ -1,6 +1,7 @@
 import React from 'react';
 import Registration from './Registration';
 import Game from './Game';
+import WinnerMessage from './WinnerMessage';
 import { gameStatus } from './gameService';
 import './App.css';
 
@@ -33,22 +34,12 @@ class App extends React.Component {
     this.setState({ board, currentPlayer: nextPlayer });
   };
   render() {
+    const { p1Name, p2Name, winner, board } = this.state;
     return (
       <div className="App">
         <Registration onNewGame={this.onNewGame} />
-        <Game
-          onCellClicked={this.handleCellClick}
-          board={this.state.board}
-          p1Name={this.state.p1Name}
-          p2Name={this.state.p2Name}
-        />
-        {this.state.winner && (
-          <div data-hook="winner-message">
-            {this.state.winner === '-'
-              ? 'it is a tie!'
-              : `${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
-          </div>
-        )}
+        <Game onCellClicked={this.handleCellClick} board={board} p1Name={p1Name} p2Name={p2Name} />
+        <WinnerMessage p1Name={p1Name} p2Name={p2Name} winner={winner} />
       </div>
     );
   }
