@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Game = ({ p1Name, p2Name, board, onCellClicked }) => {
+const Game = ({ p1Name, p2Name, board, onCellClicked, currentPlayer }) => {
   return (
     <div>
-      <span data-hook="p1-name">{p1Name}</span>
-      <span data-hook="p2-name">{p2Name}</span>
+      <span className={currentPlayer === 'X' ? 'next' : ''} data-hook="p1-name">
+        {p1Name}
+      </span>
+      <span className={currentPlayer === 'O' ? 'next' : ''} data-hook="p2-name">
+        {p2Name}
+      </span>
       <table role="grid">
         <tbody>
           {board.map((row, rIndex) => (
@@ -33,5 +37,6 @@ Game.propTypes = {
   p2Name: PropTypes.string.isRequired,
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   onCellClicked: PropTypes.func.isRequired,
+  currentPlayer: PropTypes.string.isRequired,
 };
 export default Game;
