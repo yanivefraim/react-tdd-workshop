@@ -21,6 +21,18 @@ class App extends React.Component {
     this.setState({ p1Name, p2Name, gameStarted: true });
   };
 
+  loadGame = () => {
+    const gameState = localStorage.getItem('game');
+    this.setState(JSON.parse(gameState));
+  };
+  saveGame = () => {
+    const { p1Name, p2Name, board, gameStarted, currentPlayer } = this.state;
+    localStorage.setItem(
+      'game',
+      JSON.stringify({ p1Name, p2Name, board, gameStarted, currentPlayer }),
+    );
+  };
+
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
     if (board[rIndex][cIndex]) {
@@ -49,6 +61,14 @@ class App extends React.Component {
           />
         )}
         <WinnerMessage p1Name={p1Name} p2Name={p2Name} winner={winner} />
+        <div>
+          <button data-hook="save-game" onClick={this.saveGame}>
+            Save
+          </button>
+          <button data-hook="load-game" onClick={this.loadGame}>
+            Load
+          </button>
+        </div>
       </div>
     );
   }

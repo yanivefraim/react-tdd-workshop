@@ -4,8 +4,11 @@ describe('Tic Tac Toe', () => {
   let driver;
   let page;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     page = await global.BROWSER.newPage();
+  });
+
+  beforeEach(async () => {
     driver = appDriver(page);
     await driver.navigate();
   });
@@ -49,5 +52,20 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getNextPlayer()).toBe('X');
     await driver.clickACellAt(1);
     expect(await driver.getNextPlayer()).toBe('O');
+  });
+
+  test('should load saved game', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(1);
+    await driver.saveGame();
+    await driver.navigate();
+    await driver.loadGame();
+    expect(await driver.getACellValueAt(1)).toBe('X');
+    expect(await driver.getPlayer1Title()).toBe(player1);
+    expect(await driver.getPlayer2Title()).toBe(player2);
+    expect(await driver.getNextPlayer()).toBe('O');
+    // Missing - a test for winner
   });
 });
