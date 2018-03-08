@@ -23,6 +23,8 @@ const appDriver = () => {
         .at(index)
         .text(),
     getWinnerMessage: () => wrapper.find('[data-hook="winner-message"]').text(),
+    isGameVisible: () => wrapper.find('[data-hook="cell"]').exists(),
+    isRegistrationVisible: () => wrapper.find('[data-hook="p1-input"]').exists(),
   };
 };
 

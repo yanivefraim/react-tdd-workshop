@@ -14,10 +14,11 @@ class App extends React.Component {
       board: [['', '', ''], ['', '', ''], ['', '', '']],
       winner: '',
       currentPlayer: 'X',
+      gameStarted: false,
     };
   }
   onNewGame = ({ p1Name, p2Name }) => {
-    this.setState({ p1Name, p2Name });
+    this.setState({ p1Name, p2Name, gameStarted: true });
   };
 
   handleCellClick = (rIndex, cIndex) => {
@@ -34,17 +35,19 @@ class App extends React.Component {
     this.setState({ board, currentPlayer: nextPlayer });
   };
   render() {
-    const { p1Name, p2Name, winner, board, currentPlayer } = this.state;
+    const { p1Name, p2Name, winner, board, currentPlayer, gameStarted } = this.state;
     return (
       <div className="App">
-        <Registration onNewGame={this.onNewGame} />
-        <Game
-          onCellClicked={this.handleCellClick}
-          board={board}
-          p1Name={p1Name}
-          p2Name={p2Name}
-          currentPlayer={currentPlayer}
-        />
+        {!gameStarted && <Registration onNewGame={this.onNewGame} />}
+        {gameStarted && (
+          <Game
+            onCellClicked={this.handleCellClick}
+            board={board}
+            p1Name={p1Name}
+            p2Name={p2Name}
+            currentPlayer={currentPlayer}
+          />
+        )}
         <WinnerMessage p1Name={p1Name} p2Name={p2Name} winner={winner} />
       </div>
     );

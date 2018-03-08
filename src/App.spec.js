@@ -65,3 +65,16 @@ test('should have a tie', () => {
   driver.clickACellAt(7);
   expect(driver.getWinnerMessage()).toBe(`it is a tie!`);
 });
+
+test('should hide game before registration', () => {
+  driver.render(<App />);
+  expect(driver.isGameVisible()).toBe(false);
+});
+
+test('should hide regsitration after a game started', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  expect(driver.isRegistrationVisible()).toBe(false);
+});
