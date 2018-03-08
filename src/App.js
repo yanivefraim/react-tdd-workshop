@@ -34,11 +34,17 @@ class App extends React.Component {
     this.setState({ board, currentPlayer: nextPlayer });
   };
   render() {
-    const { p1Name, p2Name, winner, board } = this.state;
+    const { p1Name, p2Name, winner, board, currentPlayer } = this.state;
     return (
       <div className="App">
         <Registration onNewGame={this.onNewGame} />
-        <Game onCellClicked={this.handleCellClick} board={board} p1Name={p1Name} p2Name={p2Name} />
+        <Game
+          onCellClicked={this.handleCellClick}
+          board={board}
+          p1Name={p1Name}
+          p2Name={p2Name}
+          currentPlayer={currentPlayer}
+        />
         <WinnerMessage p1Name={p1Name} p2Name={p2Name} winner={winner} />
       </div>
     );
