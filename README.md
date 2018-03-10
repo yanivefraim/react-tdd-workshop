@@ -57,5 +57,5 @@ The end result will be something like this:
 5. Write a browser/component test for hiding registration form after game starts.
 6. Write a browser/component test for hiding game board before game starts.
 7. Bonus: Write a browser test for user saving / loading existing game state (use local storage for that)
-7. Bonus: Write a component test for displaying the number of wins next to each user: Win a game. Press a "new game" button, and win the game again. (Use local storage for that as well)
+7. Bonus: Write a browser test for displaying the number of wins next to each user: Win a game. Press a "new game" button, and win the game again. (Use local storage for that as well)
 
