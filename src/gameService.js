@@ -35,5 +35,6 @@ export const gameStatus = board => {
     return 'O';
   }
 
-  return 'Tie';
+  const isTie = board.every(row => row.every(cell => cell));
+  if (isTie) return 'Tie';
 };

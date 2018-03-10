@@ -40,7 +40,12 @@ test('X should win diagonally (2nd direction)', () => {
   expect(gameStatus(board)).toBe('X');
 });
 
-test('should be tie', () => {
+test('should not be tie', () => {
   const board = [['', '', 'X'], ['', '', 'X'], ['X', '', '']];
+  expect(gameStatus(board)).toBe(undefined);
+});
+
+test('should be a tie', () => {
+  const board = [['X', 'O', 'X'], ['O', 'O', 'X'], ['X', 'X', 'O']];
   expect(gameStatus(board)).toBe('Tie');
 });
