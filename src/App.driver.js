@@ -23,6 +23,11 @@ const appDriver = () => {
         .at(index)
         .text(),
     getWinnerMessage: () => wrapper.find('[data-hook="winner-message"]').text(),
+    getPlayerTitle: id => {
+      const num = id === 'X' ? 1 : 2;
+      const hook = `[data-hook="p${num}-name"]`;
+      return wrapper.find(hook);
+    },
   };
 };
 

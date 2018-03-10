@@ -46,6 +46,7 @@ class App extends React.Component {
       <div className="App">
         <Registration onNewGame={this.onNewGame} />
         <Game
+          currentPlayer={this.state.currentPlayer}
           onCellClicked={this.handleCellClick}
           board={this.state.board}
           p1Name={this.state.p1Name}

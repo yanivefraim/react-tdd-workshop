@@ -72,3 +72,11 @@ test('"It\'s a tie!" should be shown', () => {
   // [['X', 'O', 'X'], ['O', 'O', 'X'], ['X', 'X', 'O']]
   expect(driver.getWinnerMessage()).toBe(`It's a tie!`);
 });
+
+test('first player name should be colored', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  expect(driver.getPlayerTitle('X').prop('style')).toEqual({ border: '1px solid black' });;
+});
