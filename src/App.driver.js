@@ -4,7 +4,7 @@ const appDriver = () => {
   let wrapper;
   return {
     render: node => {
-      wrapper = mount(node, { attachTo: document.createElement('div') });
+      wrapper = mount(node);
       return wrapper;
     },
     newGame: (p1Name, p2Name) => {
