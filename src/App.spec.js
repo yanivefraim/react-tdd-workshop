@@ -38,3 +38,18 @@ test('"O" should win the game', () => {
   driver.clickACellAt(2);
   expect(driver.getWinnerMessage()).toBe(`${p2Name} won!`);
 });
+
+test('user shuldnt click on a cell with value ', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  driver.clickACellAt(1);
+  expect(driver.getACellAt(1)).toBe('X');
+  driver.clickACellAt(1);
+  expect(driver.getACellAt(1)).toBe('X');
+});
+
+
+
+
