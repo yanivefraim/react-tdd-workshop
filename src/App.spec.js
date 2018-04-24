@@ -48,3 +48,22 @@ test("User can't change cell status once it's set", () => {
   driver.clickACellAt(0);
   expect(driver.getACellAt(0)).toBe('X');
 });
+
+test('should display tie message', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+
+  driver.clickACellAt(1); // x
+  driver.clickACellAt(2); // o
+  driver.clickACellAt(3); // x
+  driver.clickACellAt(5); // o
+  driver.clickACellAt(4); // x
+  driver.clickACellAt(7); // o
+  driver.clickACellAt(6); // x
+  driver.clickACellAt(0); // o
+  driver.clickACellAt(8); // x
+
+  expect(driver.getTieMessage()).toBe("It's a tie!");
+});

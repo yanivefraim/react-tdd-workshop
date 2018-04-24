@@ -23,6 +23,7 @@ const appDriver = () => {
         .at(index)
         .text(),
     getWinnerMessage: () => wrapper.find('[data-hook="winner-message"]').text(),
+    getTieMessage: () => wrapper.find('[data-hook="tie-message"]').text(),
   };
 };
 

@@ -35,7 +35,7 @@ class App extends React.Component {
       this.setState({ winner: this.state.currentPlayer });
     }
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
-    this.setState({ board, currentPlayer: nextPlayer });
+    this.setState({ board, currentPlayer: nextPlayer, tie: gameStatus(board) === 'tie' });
   };
   render() {
     return (
@@ -52,6 +52,7 @@ class App extends React.Component {
             {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
           </div>
         )}
+        {this.state.tie && <div data-hook="tie-message">It's a tie!</div>}
       </div>
     );
   }
