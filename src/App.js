@@ -37,6 +37,11 @@ class App extends React.Component {
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
     this.setState({ board, currentPlayer: nextPlayer, tie: gameStatus(board) === 'tie' });
   };
+
+  saveGame = () => {
+    localStorage.setItem('gameState', JSON.stringify(this.state));
+  };
+
   render() {
     return (
       <div className="App">
@@ -56,6 +61,9 @@ class App extends React.Component {
           </div>
         )}
         {this.state.tie && <div data-hook="tie-message">It&apos;s a tie!</div>}
+        <button data-hook="save-game" onClick={this.saveGame}>
+          Save game!
+        </button>
       </div>
     );
   }

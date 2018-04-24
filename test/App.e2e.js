@@ -41,4 +41,23 @@ describe('Tic Tac Toe', () => {
     await driver.clickACellAt(2);
     expect(await driver.getWinnerMessage()).toBe(`${player1} won!`);
   });
+
+  test('should save game state', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(0);
+    await driver.clickACellAt(3);
+    await driver.clickSaveGame();
+    const gameState = await driver.getGameStateFromLocalStorage();
+
+    expect(JSON.parse(gameState)).toEqual({
+      p1Name: 'Yaniv',
+      p2Name: 'Computer',
+      board: [['X', '', ''], ['O', '', ''], ['', '', '']],
+      winner: '',
+      tie: false,
+      currentPlayer: 'X',
+    });
+  });
 });
