@@ -59,3 +59,10 @@ The end result will be something like this:
 7. Bonus: Write a browser test for user saving / loading existing game state (use local storage for that)
 7. Bonus: Write a browser test for displaying the number of wins next to each user: Win a game. Press a "new game" button, and win the game again. (Use local storage for that as well)
 
+### Interesting resources
+
+- [jest-puppeteer](https://github.com/smooth-code/jest-puppeteer) - (almost) zero configuration preset to run your tests with Jest and [Puppeteer](https://github.com/GoogleChrome/puppeteer)
+- [enzyme](https://github.com/airbnb/enzyme)
+- [jsdom](https://github.com/jsdom/jsdom)
+- [jest](https://github.com/facebook/jest)
+- Jest Projects (setup multi environments on the same project. See [here](https://github.com/yanivefraim/react-tdd-workshop/blob/master/package.json#L68) for example
