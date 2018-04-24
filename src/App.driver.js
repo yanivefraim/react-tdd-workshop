@@ -26,6 +26,7 @@ const appDriver = () => {
     getTieMessage: () => wrapper.find('[data-hook="tie-message"]').text(),
     isP1NameHasClass: klass => wrapper.find('[data-hook="p1-name"]').hasClass(klass),
     isP2NameHasClass: klass => wrapper.find('[data-hook="p2-name"]').hasClass(klass),
+    isRegistrationVisible: () => wrapper.find('[data-hook="registration"]').length > 0,
   };
 };
 

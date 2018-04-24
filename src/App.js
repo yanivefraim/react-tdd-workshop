@@ -40,7 +40,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Registration onNewGame={this.onNewGame} />
+        {!this.state.p1Name && <Registration onNewGame={this.onNewGame} />}
         <Game
           onCellClicked={this.handleCellClick}
           board={this.state.board}

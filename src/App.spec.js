@@ -89,3 +89,15 @@ test('should switch current player class after init', () => {
   expect(driver.isP1NameHasClass('current-player')).toEqual(false);
   expect(driver.isP2NameHasClass('current-player')).toEqual(true);
 });
+
+test('should hide registration after game start', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  
+  expect(driver.isRegistrationVisible()).toEqual(true);
+
+  driver.newGame(p1Name, p2Name);
+
+  expect(driver.isRegistrationVisible()).toEqual(false);
+});
