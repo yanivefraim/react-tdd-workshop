@@ -48,3 +48,21 @@ test('pressing non empty cell doesn\'t change value', () => {
   driver.clickACellAt(0);
   expect(driver.getACellAt(0)).toBe('X');
 });
+
+
+test('the game should end with a tie', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  driver.clickACellAt(1);
+  driver.clickACellAt(0);
+  driver.clickACellAt(4);
+  driver.clickACellAt(2);
+  driver.clickACellAt(5);
+  driver.clickACellAt(3);
+  driver.clickACellAt(6);
+  driver.clickACellAt(7);
+  driver.clickACellAt(8);
+  expect(driver.getWinnerMessage()).toBe(`It's a tie!`);
+})
