@@ -46,6 +46,7 @@ class App extends React.Component {
           board={this.state.board}
           p1Name={this.state.p1Name}
           p2Name={this.state.p2Name}
+          currentPlayer={this.state.currentPlayer}
         />
         {this.state.winner && (
           <div data-hook="winner-message">

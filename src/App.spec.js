@@ -67,3 +67,25 @@ test('should display tie message', () => {
 
   expect(driver.getTieMessage()).toBe("It's a tie!");
 });
+
+test('on init should apply class to current player', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+
+  expect(driver.isP1NameHasClass('current-player')).toEqual(true);
+  expect(driver.isP2NameHasClass('current-player')).toEqual(false);
+});
+
+test('should switch current player class after init', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+
+  driver.clickACellAt(1);
+
+  expect(driver.isP1NameHasClass('current-player')).toEqual(false);
+  expect(driver.isP2NameHasClass('current-player')).toEqual(true);
+});
