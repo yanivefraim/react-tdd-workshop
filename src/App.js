@@ -21,6 +21,15 @@ class App extends React.Component {
     this.setState({ p1Name, p2Name, isGameStarted: true });
   };
 
+  onSaveClicked = () => {
+    window.localStorage.setItem('state', JSON.stringify(this.state));
+  };
+
+  onLoadClicked = () => {
+    const state = window.localStorage.getItem('state');
+    this.setState({ ...JSON.parse(state) });
+  };
+
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
     if (!board[rIndex][cIndex]) {
@@ -36,6 +45,7 @@ class App extends React.Component {
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
     this.setState({ board, currentPlayer: nextPlayer });
   };
+
   render() {
     return (
       <div className="App">
@@ -55,6 +65,8 @@ class App extends React.Component {
           </div>
         )}
         {this.state.isTie && <div data-hook="winner-message">It&#39;s a tie!</div>}
+        <button data-hook="save-button" onClick={this.onSaveClicked} />
+        <button data-hook="load-button" onClick={this.onLoadClicked} />
       </div>
     );
   }

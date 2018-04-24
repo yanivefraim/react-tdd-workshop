@@ -17,6 +17,9 @@ const appDriver = page => ({
   isRegistrationVisible: async () =>
     page.$$eval('[data-hook="registration-form"]', elms => elms.length),
   isBoardVisible: async () => page.$$eval('[data-hook="board"]', elms => elms.length),
+  saveGame: () => page.$eval('[data-hook="save-button"]', el => el.click()),
+  loadGame: () => page.$eval('[data-hook="load-button"]', el => el.click()),
+  refreshPage: () => page.reload(),
 });
 
 module.exports = appDriver;

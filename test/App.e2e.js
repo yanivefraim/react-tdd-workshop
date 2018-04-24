@@ -78,4 +78,15 @@ describe('Tic Tac Toe', () => {
     await driver.newGame(player1, player2);
     expect(await driver.isBoardVisible()).toBeTruthy();
   });
+
+  test('should save and load successfuly', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(0);
+    await driver.saveGame();
+    await driver.refreshPage();
+    await driver.loadGame();
+    expect(await driver.getACellValueAt(0)).toBe('X');
+  });
 });
