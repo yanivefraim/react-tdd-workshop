@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 const Game = ({ p1Name, p2Name, board, onCellClicked, currentPlayer }) => {
   return (
     <div data-hook="game-board">
-      <span data-hook="p1-name" className={currentPlayer === 'X' ? 'current-player' : ''}>{p1Name}</span>
-      <span data-hook="p2-name" className={currentPlayer === 'O' ? 'current-player' : ''}>{p2Name}</span>
+      <span data-hook="p1-name" className={currentPlayer === 'X' ? 'current-player' : ''}>
+        {p1Name}
+      </span>
+      <span data-hook="p2-name" className={currentPlayer === 'O' ? 'current-player' : ''}>
+        {p2Name}
+      </span>
       <table role="grid">
         <tbody>
           {board.map((row, rIndex) => (

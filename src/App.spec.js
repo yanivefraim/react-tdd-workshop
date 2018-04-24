@@ -94,7 +94,7 @@ test('should hide registration after game start', () => {
   const p1Name = 'Yaniv';
   const p2Name = 'Computer';
   driver.render(<App />);
-  
+
   expect(driver.isRegistrationVisible()).toEqual(true);
 
   driver.newGame(p1Name, p2Name);
@@ -106,7 +106,7 @@ test('should hide game board before game start', () => {
   const p1Name = 'Yaniv';
   const p2Name = 'Computer';
   driver.render(<App />);
-  
+
   expect(driver.isGameBoardVisible()).toEqual(false);
 
   driver.newGame(p1Name, p2Name);
