@@ -60,4 +60,23 @@ describe('Tic Tac Toe', () => {
       currentPlayer: 'X',
     });
   });
+
+  test('should load game state', async () => {
+    const gameState = {
+      p1Name: 'Yaniv',
+      p2Name: 'Computer',
+      board: [['X', '', ''], ['O', '', ''], ['', '', '']],
+      winner: '',
+      tie: false,
+      currentPlayer: 'X',
+    };
+
+    await driver.setGameStateFromLocalStorage(gameState);
+    await driver.clickLoadGame();
+
+    expect(await driver.getACellValueAt(0)).toBe('X');
+    expect(await driver.getACellValueAt(3)).toBe('O');
+    expect(await driver.getPlayer1Title()).toBe(gameState.p1Name);
+    expect(await driver.getPlayer2Title()).toBe(gameState.p2Name);
+  });
 });

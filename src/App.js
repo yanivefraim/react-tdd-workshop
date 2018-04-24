@@ -42,6 +42,10 @@ class App extends React.Component {
     localStorage.setItem('gameState', JSON.stringify(this.state));
   };
 
+  loadGame = () => {
+    this.setState(JSON.parse(localStorage.getItem('gameState')));
+  };
+
   render() {
     return (
       <div className="App">
@@ -63,6 +67,9 @@ class App extends React.Component {
         {this.state.tie && <div data-hook="tie-message">It&apos;s a tie!</div>}
         <button data-hook="save-game" onClick={this.saveGame}>
           Save game!
+        </button>
+        <button data-hook="load-game" onClick={this.loadGame}>
+          Load game!
         </button>
       </div>
     );

@@ -13,7 +13,10 @@ const appDriver = page => ({
   getWinnerMessage: () => page.$eval('[data-hook="winner-message"]', el => el.innerText),
   hasWinner: async () => !!await page.$('[data-hook="winner-message"]'),
   clickSaveGame: () => page.$eval('[data-hook="save-game"]', el => el.click()),
+  clickLoadGame: () => page.$eval('[data-hook="load-game"]', el => el.click()),
   getGameStateFromLocalStorage: () => page.evaluate(() => localStorage.getItem('gameState')),
+  setGameStateFromLocalStorage: gameState =>
+    page.evaluate(state => localStorage.setItem('gameState', JSON.stringify(state)), gameState),
 });
 
 module.exports = appDriver;
