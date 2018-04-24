@@ -14,7 +14,7 @@ export default class Registration extends Component {
   }
   render() {
     return (
-      <div>
+      <div data-hook="registration-form">
         <input onChange={el => this.setState({ p1Name: el.target.value })} data-hook="p1-input" />
         <input onChange={el => this.setState({ p2Name: el.target.value })} data-hook="p2-input" />
         <button
