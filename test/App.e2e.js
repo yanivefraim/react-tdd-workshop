@@ -56,4 +56,11 @@ describe('Tic Tac Toe', () => {
     await driver.clickACellAt(0);
     expect(await driver.player2HasBorder()).toBeTruthy();
   });
+
+  test('should remove registration when game started', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    expect(await driver.isRegistrationVisible()).toBeFalsy();
+  });
 });

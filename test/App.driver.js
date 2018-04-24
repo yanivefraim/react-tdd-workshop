@@ -13,7 +13,9 @@ const appDriver = page => ({
   getACellValueAt: index =>
     page.$$eval('[data-hook="cell"]', (cells, i) => cells[i].innerText, index),
   getWinnerMessage: () => page.$eval('[data-hook="winner-message"]', el => el.innerText),
-  hasWinner: async () => !!await page.$('[data-hook="winner-message"]'),
+  hasWinner: async () => !!(await page.$('[data-hook="winner-message"]')),
+  isRegistrationVisible: async () =>
+    page.$$eval('[data-hook="registration-form"]', elms => elms.length),
 });
 
 module.exports = appDriver;

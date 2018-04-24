@@ -14,10 +14,11 @@ class App extends React.Component {
       winner: '',
       isTie: false,
       currentPlayer: 'X',
+      isGameStarted: false,
     };
   }
   onNewGame = ({ p1Name, p2Name }) => {
-    this.setState({ p1Name, p2Name });
+    this.setState({ p1Name, p2Name, isGameStarted: true });
   };
 
   handleCellClick = (rIndex, cIndex) => {
@@ -38,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Registration onNewGame={this.onNewGame} />
+        {!this.state.isGameStarted && <Registration onNewGame={this.onNewGame} />}
         <Game
           currentPlayer={this.state.currentPlayer}
           onCellClicked={this.handleCellClick}
