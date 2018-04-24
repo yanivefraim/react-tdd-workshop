@@ -68,3 +68,4 @@ The end result will be something like this:
 - Jest Projects (setup multi environments on the same project. See [here](https://github.com/yanivefraim/react-tdd-workshop/blob/master/package.json#L68) for example
 - [Applitools eyes](https://applitools.com/).
 - [eyes.it](https://github.com/wix/eyes.it) - eyes for protractor
+- Puppeteer Egghead [course](https://egghead.io/courses/end-to-end-testing-with-google-s-puppeteer-and-jest)
