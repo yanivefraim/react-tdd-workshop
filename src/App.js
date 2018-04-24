@@ -55,7 +55,7 @@ class App extends React.Component {
             {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
           </div>
         )}
-        {this.state.tie && <div data-hook="tie-message">It's a tie!</div>}
+        {this.state.tie && <div data-hook="tie-message">It&apos;s a tie!</div>}
       </div>
     );
   }
