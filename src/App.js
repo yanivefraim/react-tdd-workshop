@@ -22,7 +22,7 @@ class App extends React.Component {
 
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
-    if (!Boolean(board[rIndex][cIndex])) {
+    if (!board[rIndex][cIndex]) {
       board[rIndex][cIndex] = this.state.currentPlayer;
     }
     const gameStat = gameStatus(board);
@@ -31,7 +31,6 @@ class App extends React.Component {
     }
     if (gameStat === 'TIE') {
       this.setState({ isTie: true });
-
     }
     const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
     this.setState({ board, currentPlayer: nextPlayer });
@@ -41,6 +40,7 @@ class App extends React.Component {
       <div className="App">
         <Registration onNewGame={this.onNewGame} />
         <Game
+          currentPlayer={this.state.currentPlayer}
           onCellClicked={this.handleCellClick}
           board={this.state.board}
           p1Name={this.state.p1Name}
@@ -51,11 +51,7 @@ class App extends React.Component {
             {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
           </div>
         )}
-        {this.state.isTie && (
-          <div data-hook="winner-message">
-            It's a tie!
-          </div>
-        )}
+        {this.state.isTie && <div data-hook="winner-message">It&#39;s a tie!</div>}
       </div>
     );
   }

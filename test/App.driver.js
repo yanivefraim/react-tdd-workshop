@@ -7,6 +7,8 @@ const appDriver = page => ({
   },
   getPlayer1Title: () => page.$eval('[data-hook="p1-name"]', el => el.innerText),
   getPlayer2Title: () => page.$eval('[data-hook="p2-name"]', el => el.innerText),
+  player1HasBorder: () => page.$eval('[data-hook="p1-name"]', el => Boolean(el.style.border)),
+  player2HasBorder: () => page.$eval('[data-hook="p2-name"]', el => Boolean(el.style.border)),
   clickACellAt: index => page.$$eval('[data-hook="cell"]', (cells, i) => cells[i].click(), index),
   getACellValueAt: index =>
     page.$$eval('[data-hook="cell"]', (cells, i) => cells[i].innerText, index),
