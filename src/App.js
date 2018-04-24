@@ -40,13 +40,15 @@ class App extends React.Component {
     return (
       <div className="App">
         {!this.state.isGameStarted && <Registration onNewGame={this.onNewGame} />}
-        <Game
-          currentPlayer={this.state.currentPlayer}
-          onCellClicked={this.handleCellClick}
-          board={this.state.board}
-          p1Name={this.state.p1Name}
-          p2Name={this.state.p2Name}
-        />
+        {this.state.isGameStarted && (
+          <Game
+            currentPlayer={this.state.currentPlayer}
+            onCellClicked={this.handleCellClick}
+            board={this.state.board}
+            p1Name={this.state.p1Name}
+            p2Name={this.state.p2Name}
+          />
+        )}
         {this.state.winner && (
           <div data-hook="winner-message">
             {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}

@@ -16,6 +16,7 @@ const appDriver = page => ({
   hasWinner: async () => !!(await page.$('[data-hook="winner-message"]')),
   isRegistrationVisible: async () =>
     page.$$eval('[data-hook="registration-form"]', elms => elms.length),
+  isBoardVisible: async () => page.$$eval('[data-hook="board"]', elms => elms.length),
 });
 
 module.exports = appDriver;

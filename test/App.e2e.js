@@ -63,4 +63,19 @@ describe('Tic Tac Toe', () => {
     await driver.newGame(player1, player2);
     expect(await driver.isRegistrationVisible()).toBeFalsy();
   });
+
+  test('should remove board before game started', async () => {
+    expect(await driver.isBoardVisible()).toBeFalsy();
+  });
+
+  test('should show registration before game started', async () => {
+    expect(await driver.isRegistrationVisible()).toBeTruthy();
+  });
+
+  test('should show board after game started', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+    await driver.newGame(player1, player2);
+    expect(await driver.isBoardVisible()).toBeTruthy();
+  });
 });

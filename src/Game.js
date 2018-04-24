@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Game = ({ p1Name, p2Name, board, onCellClicked, currentPlayer }) => {
   return (
-    <div>
+    <div data-hook="board">
       <span style={{ border: currentPlayer === 'X' && '1px solid red' }} data-hook="p1-name">
         {p1Name}
       </span>
