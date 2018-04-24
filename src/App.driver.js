@@ -23,7 +23,9 @@ const appDriver = () => {
         .at(index)
         .text(),
     getWinnerMessage: () => wrapper.find('[data-hook="winner-message"]').text(),
-    getTieMessage: () => wrapper.find('[data-hook="tie-message"]').text()
+    getTieMessage: () => wrapper.find('[data-hook="tie-message"]').text(),
+    isRegestressionShown: () => wrapper.find('[data-hook="regesression"]').length > 0,
+    isBoardShown: () => wrapper.find('[data-hook="game"]').length > 0,
   };
 };
 

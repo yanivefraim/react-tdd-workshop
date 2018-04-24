@@ -6,39 +6,35 @@ export const gameStatus = board => {
   };
 
   const winByRow = symbol => {
+    let l;
     for (let i = 0; i < 3; i++) {
-      let l = board.map(e => e[i]);
+      l = board.map(e => e[i]);
       if (l.every(cell => cell === symbol)) return true;
     }
     return false;
   };
 
   const winByDiagonal = symbol => {
-    let topRight =
-      board[0][0] === symbol &&
-      board[1][1] === symbol &&
-      board[2][2] === symbol;
-    let rightBottom =
-      board[0][2] === symbol &&
-      board[1][1] === symbol &&
-      board[2][0] === symbol;
+    const topRight = board[0][0] === symbol && board[1][1] === symbol && board[2][2] === symbol;
+    const rightBottom = board[0][2] === symbol && board[1][1] === symbol && board[2][0] === symbol;
     return topRight || rightBottom;
   };
 
-  const tie = ()=>{
+  const tie = () => {
+    let emptyCells;
+    let cellsCount = 0;
     board.forEach(element => {
-      let emptyCells =element.map(e => e ==='');
-      if (emptyCells.length > 1) return false;
+      emptyCells = element.filter(e => e === '');
+      cellsCount += emptyCells.length;
     });
-    return true
-  } 
-  
-  if (winByline("X") || winByRow("X") || winByDiagonal("X")) {
-    return "X";
+    return cellsCount === 0;
+  };
+
+  if (winByline('X') || winByRow('X') || winByDiagonal('X')) {
+    return 'X';
   }
-  if (winByline("O") || winByRow("O") || winByDiagonal("O")) {
-    return "O";
+  if (winByline('O') || winByRow('O') || winByDiagonal('O')) {
+    return 'O';
   }
-  if (tie())
-    return "tie"
+  if (tie()) return 'tie';
 };

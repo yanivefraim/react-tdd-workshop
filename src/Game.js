@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Game = ({ p1Name, p2Name, board, onCellClicked }) => {
+const Game = ({ p1Name, p2Name, board, onCellClicked, current }) => {
+  const xClass = current === 'X' ? 'current' : 'next';
+  const oClass = current === 'O' ? 'current' : 'next';
   return (
-    <div>
-      <span data-hook="p1-name">{p1Name}</span>
-      <span data-hook="p2-name">{p2Name}</span>
+    <div data-hook="game">
+      <span data-hook="p1-name" className={xClass}>
+        {p1Name}
+      </span>
+      <span data-hook="p2-name" className={oClass}>
+        {p2Name}
+      </span>
       <table role="grid">
         <tbody>
           {board.map((row, rIndex) => (

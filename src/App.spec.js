@@ -50,17 +50,11 @@ test('user shuldnt click on a cell with value ', () => {
   expect(driver.getACellAt(1)).toBe('X');
 });
 
-
-
-
-
 // test("should be tie ", () => {
 //   const board = [["O", "X", "O"], ["O", "X", "X"], ["X", "O", "O"]];
 //                    0     1   2     3   4   5       6     7   8
-//expect(gameStatus(board)).toBe("tie");
+// expect(gameStatus(board)).toBe("tie");
 // });
-
-
 test('game finish with tie', () => {
   const p1Name = 'Yaniv';
   const p2Name = 'Computer';
@@ -78,6 +72,19 @@ test('game finish with tie', () => {
   expect(driver.getTieMessage()).toBe(`game finish with tie!`);
 });
 
-
-
-
+test('hide regestression after inserting 2 names  ', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  expect(driver.isRegestressionShown()).toBe(true);
+  driver.newGame(p1Name, p2Name);
+  expect(driver.isRegestressionShown()).toBe(false);
+});
+test('hide board at the start of the game  ', () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  expect(driver.isBoardShown()).toBe(false);
+  driver.newGame(p1Name, p2Name);
+  expect(driver.isBoardShown()).toBe(true);
+});
