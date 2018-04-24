@@ -30,8 +30,8 @@ describe('Tic Tac Toe', () => {
   });
 
   test('first player should win the game', async () => {
-    const player1 = 'Yaniv';
-    const player2 = 'Computer';
+    const player1 = 'Bibi';
+    const player2 = 'Sara';
     await driver.newGame(player1, player2);
     await driver.clickACellAt(0);
     await driver.clickACellAt(3);
@@ -43,8 +43,8 @@ describe('Tic Tac Toe', () => {
   });
 
   test('should save game state', async () => {
-    const player1 = 'Yaniv';
-    const player2 = 'Computer';
+    const player1 = 'Yury';
+    const player2 = 'Moshe';
     await driver.newGame(player1, player2);
     await driver.clickACellAt(0);
     await driver.clickACellAt(3);
@@ -52,12 +52,14 @@ describe('Tic Tac Toe', () => {
     const gameState = await driver.getGameStateFromLocalStorage();
 
     expect(JSON.parse(gameState)).toEqual({
-      p1Name: 'Yaniv',
-      p2Name: 'Computer',
+      p1Name: 'Yury',
+      p2Name: 'Moshe',
       board: [['X', '', ''], ['O', '', ''], ['', '', '']],
       winner: '',
       tie: false,
       currentPlayer: 'X',
+      p1Wins: 0,
+      p2Wins: 0,
     });
   });
 
@@ -69,6 +71,8 @@ describe('Tic Tac Toe', () => {
       winner: '',
       tie: false,
       currentPlayer: 'X',
+      p1Wins: 0,
+      p2Wins: 0,
     };
 
     await driver.setGameStateFromLocalStorage(gameState);
@@ -78,5 +82,26 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getACellValueAt(3)).toBe('O');
     expect(await driver.getPlayer1Title()).toBe(gameState.p1Name);
     expect(await driver.getPlayer2Title()).toBe(gameState.p2Name);
+  });
+
+  test('should display number of times player have won', async () => {
+    const player1 = 'Yaniv';
+    const player2 = 'Computer';
+
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(0);
+    await driver.clickACellAt(3);
+    await driver.clickACellAt(1);
+    await driver.clickACellAt(4);
+    await driver.clickACellAt(2);
+
+    await driver.newGame(player1, player2);
+    await driver.clickACellAt(0);
+    await driver.clickACellAt(3);
+    await driver.clickACellAt(1);
+    await driver.clickACellAt(4);
+    await driver.clickACellAt(2);
+
+    expect(await driver.getWinnerMessage()).toBe(`${player1} won! He won 1 times before that!`);
   });
 });
