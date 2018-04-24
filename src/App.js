@@ -19,7 +19,16 @@ class App extends React.Component {
     this.setState({ p1Name, p2Name });
   };
 
+  isCellAlreadySet(rIndex, cIndex) {
+    const { board } = this.state;
+    return board[rIndex][cIndex] === 'X' || board[rIndex][cIndex] === 'O';
+  }
+
   handleCellClick = (rIndex, cIndex) => {
+    if (this.isCellAlreadySet(rIndex, cIndex)) {
+      return;
+    }
+
     const board = this.state.board.map(row => [...row]);
     board[rIndex][cIndex] = this.state.currentPlayer;
     if (gameStatus(board) === this.state.currentPlayer) {

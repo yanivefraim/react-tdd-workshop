@@ -38,3 +38,13 @@ test('"O" should win the game', () => {
   driver.clickACellAt(2);
   expect(driver.getWinnerMessage()).toBe(`${p2Name} won!`);
 });
+
+test("User can't change cell status once it's set", () => {
+  const p1Name = 'Yaniv';
+  const p2Name = 'Computer';
+  driver.render(<App />);
+  driver.newGame(p1Name, p2Name);
+  driver.clickACellAt(0);
+  driver.clickACellAt(0);
+  expect(driver.getACellAt(0)).toBe('X');
+});
