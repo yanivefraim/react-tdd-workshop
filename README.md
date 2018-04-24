@@ -66,3 +66,4 @@ The end result will be something like this:
 - [jsdom](https://github.com/jsdom/jsdom)
 - [jest](https://github.com/facebook/jest)
 - Jest Projects (setup multi environments on the same project. See [here](https://github.com/yanivefraim/react-tdd-workshop/blob/master/package.json#L68) for example
+- [Applitools eyes](https://applitools.com/)
