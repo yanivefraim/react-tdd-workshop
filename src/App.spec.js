@@ -6,6 +6,14 @@ import App from './App';
 import appDriver from './App.driver';
 
 configure({ adapter: new Adapter() });
+
+beforeAll(() => {
+  global.localStorage = {
+    getItem: () => null,
+    setItem: () => null,
+    clear: () => null,
+  };
+});
 let driver;
 beforeEach(() => (driver = appDriver()));
 
