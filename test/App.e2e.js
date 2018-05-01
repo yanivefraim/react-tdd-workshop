@@ -1,3 +1,4 @@
+const eyes = require('puppeteer-eyes.it');
 const appDriver = require('./App.driver');
 
 describe('Tic Tac Toe', () => {
@@ -5,7 +6,7 @@ describe('Tic Tac Toe', () => {
   let page;
 
   beforeAll(async () => {
-    page = await global.BROWSER.newPage();
+    page = global.page = await global.BROWSER.newPage();
   });
 
   beforeEach(async () => {
@@ -13,7 +14,7 @@ describe('Tic Tac Toe', () => {
     await driver.navigate();
   });
 
-  test('should start a new game', async () => {
+  eyes.test('should start a new game', async () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);
@@ -23,7 +24,7 @@ describe('Tic Tac Toe', () => {
     expect(p2Name).toBe(player2);
   });
 
-  test('should show "X" after first player clicks', async () => {
+  eyes.test('should show "X" after first player clicks', async () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);
@@ -32,7 +33,7 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getACellValueAt(0)).toBe('X');
   });
 
-  test('first player should win the game', async () => {
+  eyes.test('first player should win the game', async () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);
@@ -45,7 +46,7 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getWinnerMessage()).toBe(`${player1} won!`);
   });
 
-  test('should show next player', async () => {
+  eyes.test('should show next player', async () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);
@@ -54,7 +55,7 @@ describe('Tic Tac Toe', () => {
     expect(await driver.getNextPlayer()).toBe('O');
   });
 
-  test('should load saved game', async () => {
+  eyes.test('should load saved game', async () => {
     const player1 = 'Yaniv';
     const player2 = 'Computer';
     await driver.newGame(player1, player2);

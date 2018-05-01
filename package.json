@@ -104,5 +104,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "puppeteer-eyes.it": "^1.0.27"
   }
 }
