@@ -11,8 +11,9 @@ class App extends React.Component {
       p1Name: '',
       p2Name: '',
       board: [['', '', ''], ['', '', ''], ['', '', '']],
-      winner: '',
+      winner: false,
       currentPlayer: 'X',
+      tie: '',
     };
   }
   onNewGame = ({ p1Name, p2Name }) => {
@@ -21,28 +22,43 @@ class App extends React.Component {
 
   handleCellClick = (rIndex, cIndex) => {
     const board = this.state.board.map(row => [...row]);
-    board[rIndex][cIndex] = this.state.currentPlayer;
-    if (gameStatus(board) === this.state.currentPlayer) {
-      this.setState({ winner: this.state.currentPlayer });
+    if (board[rIndex][cIndex] === '') {
+      board[rIndex][cIndex] = this.state.currentPlayer;
+
+      const status = gameStatus(board);
+      if (status === this.state.currentPlayer) {
+        this.setState({ winner: this.state.currentPlayer });
+      }
+      if (status === 'tie') {
+        this.setState({ tie: true });
+      }
+      const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
+      this.setState({ board, currentPlayer: nextPlayer });
     }
-    const nextPlayer = this.state.currentPlayer === 'X' ? 'O' : 'X';
-    this.setState({ board, currentPlayer: nextPlayer });
   };
   render() {
     return (
       <div className="App">
-        <Registration onNewGame={this.onNewGame} />
-        <Game
-          onCellClicked={this.handleCellClick}
-          board={this.state.board}
-          p1Name={this.state.p1Name}
-          p2Name={this.state.p2Name}
-        />
+        {this.state.p1Name === '' &&
+          this.state.p2Name === '' && <Registration onNewGame={this.onNewGame} />}
+
+        {this.state.p1Name !== '' &&
+          this.state.p2Name !== '' && (
+            <Game
+              onCellClicked={this.handleCellClick}
+              board={this.state.board}
+              p1Name={this.state.p1Name}
+              p2Name={this.state.p2Name}
+              current={this.state.currentPlayer}
+            />
+          )}
         {this.state.winner && (
           <div data-hook="winner-message">
             {`${this.state.winner === 'X' ? this.state.p1Name : this.state.p2Name} won!`}
           </div>
         )}
+
+        {this.state.tie && <div data-hook="tie-message">game finish with tie!</div>}
       </div>
     );
   }
